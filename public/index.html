@@ -124,13 +124,15 @@
                     <button type="button" class="btn btn-default btn-sm toggle-table">Show Data</button>
                     <button type="button" class="btn btn-default btn-sm select-clear">Clear Selected</button>
                 </div>
-                <div class="overlay-toggle">
-                    <label class="radio-inline">
-                      <input type="radio" name="map-overlay" id="council-overlay" value="council" checked="checked"> Council Districts
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="map-overlay" id="neighborhood-overlay" value="neighborhood"> Neighborhoods
-                    </label>
+                
+                <!-- Toggle for map overlay. Selected value would be in <button></button> and unselected value would be in the dropdown <li></li> -->
+                <div class="btn-group dropup datatoggle">
+                  <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                    Council Districts <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Neighborhood Assocations</a></li>
+                  </ul>
                 </div>
                 <div class="form mapsearch">
                     <input id="searchbox" type="text" class="typeahead form-control" placeholder="search map">

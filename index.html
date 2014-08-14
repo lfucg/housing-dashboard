@@ -27,7 +27,7 @@
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Arvo:400,700' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css?foo=74345">
+    <link rel="stylesheet" href="css/main.css?foo=68026">
 </head>
 
 <body>
@@ -42,8 +42,8 @@
             <li data-category="ce-housing"><a>Housing Code Violations</a></li>
             <li data-category="ce-nuisance"><a>Nuisance Violations</a></li>
             <li data-category="buildingpermits"><a>Building Permits</a></li>
-            <li><a>Foreclosures</a></li>
-            <li><a>Property Values</a></li>
+            <li data-category="foreclosures"><a>Foreclosures</a></li>
+            <li data-category="avgpropertyvaluefaircash"><a>Property Values</a></li>
         </ul>
         <!-- <div class="container"> -->
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -91,7 +91,7 @@
                 <h1>Lexington Housing Data Dashboard</h1>
             </div>
             <div class="col-md-8 map-container">
-                <div id="metric-container" style="min-height: 37px">
+                <div id="metric-container" style="max-height:0">
                 <!--
                     This is where you list all of the variables you want to see
                     in the dropdown list. You don't have to list everything here.
@@ -104,19 +104,24 @@
                     off.
                  -->
                     <select id="metric" data-placeholder="SEARCH VARIABLES" class="form-control input-lg form-metric chosen-select hide">
-                        <optgroup label="Code Enforcement">
+                        <optgroup label="Housing">
                             <option value="ce-nuisance">
                                 Code Enforcement Cases - Nuisance
                             </option>
                             <option value="ce-housing">
                                 Code Enforcement Cases - Housing
                             </option>
-                        </optgroup>
-                        <optgroup label="Permits">
                             <option value="buildingpermits">
                                 Building Permits
                             </option>
+                            <option value="foreclosures">
+                                Foreclosures
+                            </option>
+                            <option value="avgpropertyvaluefaircash">
+                                Property Value
+                            </option>
                         </optgroup>
+
                     </select>
                 </div>
                 <div id="map"></div>
@@ -379,7 +384,7 @@
     <!-- End jQuery Tourbus -->
 
     <!-- scripts at the bottom yo -->
-    <script src="js/main.js?foo=74345"></script>
+    <script src="js/main.js?foo=68026"></script>
 
     <!--   Google Analytics -->
     <script>

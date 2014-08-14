@@ -1,0 +1,28 @@
+{
+  "name": "qoldashboard",
+  "version": "2.0.0",
+  "homepage": "https://github.com/tobinbradley/Mecklenburg-County-Quality-of-Life-Dashboard",
+  "authors": [
+    "Tobin Bradley <tobin.bradley@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jquery.scrollTo": "1.4.12",
+    "topojson": "1.6.14",
+    "bootstrap": "3.1.1",
+    "d3": "3.4.8",
+    "jquery": "2.1.1",
+    "lodash": "2.4.1",
+    "jquery-placeholder": "2.0.8",
+    "leaflet": "0.7.3"
+  }
+}

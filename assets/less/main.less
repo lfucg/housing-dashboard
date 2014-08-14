@@ -1,0 +1,261 @@
+// imports
+@import "vendor/bootstrap/bootstrap.less";
+@import (less) "vendor/jquery-ui-1.10.3.custom.css";
+@import (less) "../../bower_components/leaflet/dist/leaflet.css";
+@import "vendor/typeahead.less";
+@import "vendor/bootstrap-chosen.less";
+@import "vendor/jquery-tourbus.less";
+@import "vis.less";
+
+// vars
+// @body-color: rgb(249, 249, 249);
+@body-color: white;
+@fancyshadow: inset 0 0 40px rgba(0, 0, 0, 0.12); //0 8px 6px -6px #666,
+@highlightColor: #F6DC62;
+@selectedColor: #FFA400;
+@darkGray: #666;
+@font-family-sans-serif:  "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*@brand-primary: #008F75;*/
+@brand-primary: #1fa67a;
+
+/* nav bar */
+.brand-icon {
+    height: 180px;
+    width: 240px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: url(../images/brand-icon.png) no-repeat @brand-primary;
+}
+
+#metric-container {
+    visibility: hidden;
+}
+
+/* OldIE Prompt */
+.oldie {
+    width: 100%;
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px;
+    background: yellow;
+    a {
+        text-decoration: underline;
+    }
+}
+
+body {
+    background-color: @body-color;
+}
+
+.container {
+    background-color: @body-color;
+    margin-top: 15px;
+    margin-left: 250px;
+    h1 {
+        margin-bottom: 108px;
+        color: @brand-primary;
+    } 
+}
+
+/* chosen customizations */
+.chosen-container {
+    max-width: 100%;
+}
+
+.chosen-single {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chosen-search input {
+    &:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+}
+
+// Leaflet customizations
+.leaflet-control-layers, .leaflet-control-zoom, .leaflet-bar a {
+    box-shadow: none;
+}
+
+.leaflet-control-zoom {
+    border: 1px solid #d3d4d8;
+}
+
+// Bootstrap customizations
+.well {
+    box-shadow: @fancyshadow;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.nav {
+    top: 180px;
+    bottom: 0px;
+    width: 240px;
+    background-color: #f2f2f2;
+    position: fixed;
+    li {
+        padding: 20px;
+        font-size: 1.2em;
+    }
+}
+
+.contact {
+    min-width: 300px;
+    padding: 10px 10px 0;
+    input, textarea {
+        margin: 0 0 10px;
+    }
+}
+
+.row-vis {
+    min-height: 651px;
+}
+.page-footer {
+    margin-top: 50px;
+}
+
+.legend-mean {
+    margin-top: -15px;
+    font-size: 0.9em;
+}
+
+.datatoggle {
+    margin-top: 7px;
+    .btn-default {
+        background-color: rgba(255,255,255,0.2);
+        &:hover {
+            background-color: rgba(200,200,200,0.4);
+        }
+    }
+}
+
+
+.meta-subtitle {
+    font-size: 1em;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.meta-container {
+    margin-top: 55px;
+}
+
+.meta-resources ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+// Map
+#map {
+    // height: 550px; Increased height, below, to increase zoom default without cropping Lexington
+    height: 660px;
+    //background: url(../images/wet-graph-paper-seamless-background.jpg);
+    background: rgba(0,0,0,0);
+    border: 1px solid #d3d4d8;
+    //box-shadow: @fancyshadow;
+}
+.mapsearch {
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    right: 24px;
+    width: 40%;
+    margin: 0 auto;
+    input[type="text"] {
+        background: rgba(255,255,255,0.9);
+    }
+}
+
+
+#barChart {
+    height: 250px;
+}
+#lineChart {
+    margin: 20px 0;
+    height: 150px;
+}
+
+
+// year control
+.yearDisplay {
+    //background: rgba(255,255,255,0.5);
+    //border-radius: 5px;
+    //padding: 5px;
+    // border: 1px solid #ccc;
+    .slider {
+       width: 100px;
+       display: inline-block;
+       margin: 0 6px 0 10px;
+       position: relative;
+       top: 3px;
+    }
+    .time-year {
+        font-family: @font-family-sans-serif;
+        font-weight: bold;
+        font-size: 2.8em;
+        color: @darkGray;
+        text-shadow: 1px 1px 3px rgb(150,150,150);
+        margin: 0 0 0 0;
+    }
+}
+
+// table
+.datatable-container {
+    display: none;
+    margin-top: 10px;
+    .text-accuracy {
+        font-size: 0.8em;
+        padding-left: 15px;
+        font-style: italic;
+    }
+    .datatable-raw, .datatable-value {
+        font-weight: bold;
+    }
+    th {
+        width: 20%;
+    }
+}
+table {
+    td:empty {
+        background: rgba(200,200,200,0.5);
+    }
+    tr.d3-highlight {
+        background: @highlightColor;
+        transition: all 0.5s ease-out;
+    }
+}
+
+// repsonsive design adjustments
+@media (max-width: 990px) {
+    // Header text
+    // .navbar-default .navbar-brand {
+    //     color: white;
+    //     font-size: 18px;
+    // }
+    // map
+    .map-container {
+        height: 380px;
+    }
+    #map {
+        height: 320px;
+        border: 1px dashed #d3d4d8;
+    }
+    .stats {
+        div {
+            padding-top: 15px;
+        }
+    }
+}
+
+//  printing
+@media print {
+
+}

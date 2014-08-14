@@ -29529,6 +29529,15 @@ function draw(geom) {
     });
 }
 
+$("#js-category li").on("click",function(){
+    $("#js-category li").removeClass("active");
+    $(this).addClass("active");
+    var theVal = $(this).data("category");
+    fetchMetricData(theVal);
+    $(".chosen-select").val(theVal).trigger("chosen:updated");
+});
+
+
 function changeMetric(data) {
     var theVal = $("#metric").val();
     $(".d3-tip").remove();
@@ -29553,7 +29562,7 @@ function processMetric(msg, data) {
     }
 
     // set slider and time related stuff
-    year = metricData.length -1;
+    year = 41; // months numbered with January 2011 as 0, so 41 represents June 2014
     $(".slider").slider("option", "max", metricData.length - 1).slider("value", year);
     metricData.length > 1 ? $(".time").fadeIn() : $(".time").hide();
     $('.time-year').text(nameMonth(metricData[year].year));

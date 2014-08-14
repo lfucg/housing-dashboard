@@ -5848,6 +5848,18 @@ rect.bar {
   padding-top: 12px;
 }
 /*@brand-primary: #008F75;*/
+/* nav bar */
+.brand-icon {
+  height: 180px;
+  width: 240px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: url(../images/brand-icon.png) no-repeat #1fa67a;
+}
+#metric-container {
+  visibility: hidden;
+}
 /* OldIE Prompt */
 .oldie {
   width: 100%;
@@ -5861,10 +5873,16 @@ rect.bar {
   text-decoration: underline;
 }
 body {
-  background: #f9f9f9;
+  background-color: #ffffff;
 }
-.container-content {
-  margin-top: 40px;
+.container {
+  background-color: #ffffff;
+  margin-top: 15px;
+  margin-left: 250px;
+}
+.container h1 {
+  margin-bottom: 108px;
+  color: #1fa67a;
 }
 /* chosen customizations */
 .chosen-container {
@@ -5881,20 +5899,6 @@ body {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
-.category-banner {
-  margin-top: 1em;
-}
-.category-banner .category-title {
-  text-align: center;
-  padding: 0 1em 0.8em 1em;
-  border: 6px solid #005240;
-}
-.category-banner h1 {
-  font-size: 5em;
-  text-shadow: #6a6d41 0 1px 1px;
-  color: white;
-  font-family: "Arvo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 .leaflet-control-layers,
 .leaflet-control-zoom,
 .leaflet-bar a {
@@ -5909,22 +5913,16 @@ body {
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.12);
   background-color: rgba(255, 255, 255, 0.3);
 }
-.navbar-main {
-  background: #1fa67a;
+.nav {
+  top: 180px;
+  bottom: 0px;
+  width: 240px;
+  background-color: #f2f2f2;
+  position: fixed;
 }
-.navbar-default {
-  border-radius: 0;
-}
-.navbar-default .navbar-brand {
-  text-shadow: #777 0 1px 1px;
-  color: white;
-}
-.navbar-default .navbar-brand:hover {
-  color: #211f1f;
-  text-shadow: none;
-}
-.navbar-default .navbar-nav > li > a {
-  color: white;
+.nav li {
+  padding: 20px;
+  font-size: 1.2em;
 }
 .contact {
   min-width: 300px;
@@ -6029,10 +6027,6 @@ table tr.d3-highlight {
   transition: all 0.5s ease-out;
 }
 @media (max-width: 990px) {
-  .navbar-default .navbar-brand {
-    color: white;
-    font-size: 18px;
-  }
   .map-container {
     height: 380px;
   }

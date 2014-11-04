@@ -74,7 +74,7 @@ If you have git installed, just:
 
     git clone https://github.com/tobinbradley/Mecklenburg-County-Quality-of-Life-Dashboard.git whatever-you-want-to-call-it
     cd whatever-you-called-it
-    git checkout dev
+    git checkout master
 
 If you don't have git installed, grab [the zip file](https://github.com/tobinbradley/Mecklenburg-County-Quality-of-Life-Dashboard/archive/dev.zip) and unzip it someplace.
 
@@ -150,7 +150,7 @@ Building for deployment does all of the niceties for you - JavaScript concatenat
 ## Deploy to github pages
 
 ```
-git checkout dev
+git checkout master
 gulp build
 git checkout gh-pages
 sh deploy.sh

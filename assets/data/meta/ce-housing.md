@@ -12,3 +12,4 @@ _Source: Lexington Divison of Code Enforcement, Department of Planning, Preserva
 ### Additional Resources
 + [2012 International Property Maintenance Code](http://publicecodes.cyberregs.com/icod/ipmc/2012/)
 + [Lexington Division of Code Enforcement](http://www.lexingtonky.gov/index.aspx?page=950)
++ [Download the Data](http://www.civicdata.com/dataset/lexington-code-enforcement-complaints/resource/ad346da7-ce88-4c77-a0e1-10ff09bb0622)

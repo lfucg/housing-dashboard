@@ -13,3 +13,4 @@ _Source: Lexington Division of Code Enforcement, Department of Planning, Preserv
 + [Lexington Division of Code Enforcement](http://www.lexingtonky.gov/index.aspx?page=950)
 + [Code Enforcement Resources](http://www.lexingtonky.gov/index.aspx?page=3192)
 + [Lexington Code of Ordinances](https://library.municode.com/HTML/11163/level3/COOR_CH12HO_ARTIINGE.html#COOR_CH12HO_ARTIINGE_S12-4NUABLIRE#TOPTITLE)
++ [Download the Data](http://www.civicdata.com/dataset/lexington-code-enforcement-complaints/resource/ad346da7-ce88-4c77-a0e1-10ff09bb0622)

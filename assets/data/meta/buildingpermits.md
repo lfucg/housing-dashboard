@@ -13,3 +13,4 @@ _Source: Lexington-Fayette Urban County Government Division of Planning, January
 + [Lexington Division of Building Inspection](http://www.lexingtonky.gov/index.aspx?page=498)
 + [Lexington Housing Authority](http://www.lexha.org/)
 + [Lexington Habitat for Humanity](http://lexhabitat.org/)
++ [Download the Data](http://www.civicdata.com/dataset/lexington-building-permits/resource/2691aff1-e555-48d3-9188-aebf1fa8323e)

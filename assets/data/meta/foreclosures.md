@@ -11,3 +11,4 @@ _Source: Fayette County Property Valuation Administrator, 2011-2014._
 
 ### Additional Resources
 + [Fayette County Property Valuation Administrator](http://www.fayette-pva.com)
++ [Download the Data](http://www.civicdata.com/dataset/lexington-foreclosure-sales/resource/291ffa8e-0a00-4120-8bb4-e90e5d8544ad)

@@ -1,5 +1,5 @@
 // todo figure out whey there is a need to initMap in two different ways (global versus setup)
-globals.initMap = function(msg, data) {
+globals.initD3Map = function(msg, data) {
     var setPanBounds = function(padding) {
         // Creates pan bounds with custom padding around data extent.
 
@@ -9,8 +9,13 @@ globals.initMap = function(msg, data) {
         var newSouthWest = L.latLng(southWest.lat - padding, southWest.lng - padding);
         var newNorthEast = L.latLng(northEast.lat + padding, northEast.lng + padding);
         return L.latLngBounds(newSouthWest, newNorthEast);
-
     };
+
+    globals.precinctProperties = {};
+    var precincts = data.geom.objects[neighborhoods];
+    precincts.geometries.forEach(function(precinct) {
+      globals.precinctProperties[precinct.properties.OBJECTID] = precinct.properties;
+    });
 
     // Eyes wide open for this narly hack.
     // There are lots of different ways to put a D3 layer on Leaflet, and I found
@@ -20,6 +25,7 @@ globals.initMap = function(msg, data) {
     // adds the polys in the topojson order to add a data-id and geom class to the
     // layer so I can handle it D3-ish rather than through the Leaflet API.
 
+    // neighborhoods is a token eg 'precincts'
     d3Layer = L.geoJson(topojson.feature(data.geom, data.geom.objects[neighborhoods]), {
         style: {
             "fillColor": "rgba(0,0,0,0)",
@@ -81,7 +87,6 @@ globals.initMap = function(msg, data) {
                 "weight": 1
             }
         }).addTo(map);
-        console.log('added');
     }
 }
 

@@ -133,33 +133,33 @@ function barChart() {
         return my;
     };
 
-    my.pointerAdd = function (id, value, container) {
+    my.pointerAdd = function (objectId, value, container) {
         d3.select(container)
             .append("line")
             .attr("x1", xScale(value))
             .attr("x2", xScale(value))
             .attr("y1", y(0))
             .attr("y2", 185)
-            .attr("data-id", id);
+            .attr("data-id", objectId);
         d3.select(container)
             .append("circle")
             .attr("cx", xScale(value))
             .attr("cy", y(0))
             .attr("r", 4)
-            .attr("data-id", id);
+            .attr("data-id", objectId);
         var rect = d3.select(container)
             .append("rect")
             .attr("y", 165)
             .attr("rx", 3)
             .attr("ry", 3)
-            .attr("data-id", id)
+            .attr("data-id", objectId)
             .attr("class", "metric-hover");
         var text = d3.select(container)
             .append("text")
             .attr("x", xScale(value))
             .attr("y", 180)
-            .text(globals.precinctName(id))
-            .attr("data-id", id);
+            .text(globals.precinctName(objectId))
+            .attr("data-id", objectId);
 
         var textSize = text.node().getBBox();
         rect.attr("width", textSize.width + 6)
@@ -169,8 +169,8 @@ function barChart() {
         return my;
     };
 
-    my.pointerRemove = function (id, container) {
-        d3.selectAll(".barchart " + container + " [data-id='" + id + "']").remove();
+    my.pointerRemove = function (objectId, container) {
+        d3.selectAll(".barchart " + container + " [data-id='" + objectId + "']").remove();
         return my;
     };
 

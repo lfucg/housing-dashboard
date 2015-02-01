@@ -1,5 +1,6 @@
-globals.precinctName = function(id) {
-  return precincts[id];
+globals.precinctName = function(objectId) {
+  // EDS: I can't figure out where the off by one error occurs that requires this subtraction
+  return 'objectId ' + objectId + ' property OBJECTID: ' + globals.precinctProperties[objectId-1]['NAME'];
 }
 
 _.templateSettings.variable = "rc";
@@ -28,16 +29,9 @@ globals.getURLParameter = function(name) {
 }
 
 var setup = {
-  loadPrecinctNames: function() {
-    $.getJSON('data/precincts.geojson', function(precinctJson) {
-      _.each(precinctJson.features, function(feature) {
-        precincts[feature.properties.OBJECTID - 1] = feature.properties.NAME;
-      });
-    });
-  },
   initPubSub: function() {
     // pubsub subscriptions
-    PubSub.subscribe('initialize', globals.initMap);
+    PubSub.subscribe('initialize', globals.initD3Map);
     // PubSub.subscribe('initialize', initTypeahead);
     PubSub.subscribe('changeYear', globals.setExtent);
     PubSub.subscribe('changeYear', globals.drawMap);
@@ -314,7 +308,6 @@ globals.recordMetricHistory = function(msg, data) {
 
 $(document).ready(function () {
 
-    setup.loadPrecinctNames();
     setup.initPubSub();
     // setup.loadMetricFromUrl();
     // setup.initPushstate();

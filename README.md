@@ -11,17 +11,16 @@ The dashboard displays neighborhood-level data -- such as building permits, fore
 
 * Add vector layers:
   * Council.shp, rename to districts, export as geojson
-  * VotingPrecincts.shp, rename to precincts, export as geojson to assets/data/precincts.geojson
+  * VotingPrecincts.shp, rename to precincts, export as geojson to precincts.geojson
 
 ```
-topojson -o assets/data/geography.topo.json -s 7e-11 --id-property=OBJECTID assets/data/precincts.geojson districts.geojson
-rm districts.geojson # if the district lines appear on the map and you're happy
+topojson -o assets/data/geography.topo.json -s 7e-11 --properties --id-property=OBJECTID precincts.geojson districts.geojson
+rm districts.geojson precincts.geojson # if map looks correct
 ```
-
 
 ### If you don't have QGIS
 
-* topojson -o assets/data/geography.topo.json -s 7e-11 --id-property=OBJECTID VotingPrecinct.shp Council.shp
+* topojson -o assets/data/geography.topo.json -s 7e-11 --properties --id-property=OBJECTID VotingPrecinct.shp Council.shp
 * open the topo file and rename Objects like so: VotingPrecinct to precincts, and Council to districts
 
 ## The Application

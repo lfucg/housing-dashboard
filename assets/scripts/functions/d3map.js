@@ -16,7 +16,6 @@ globals.initD3Map = function(msg, data) {
         var newSouthWest = L.latLng(southWest.lat - padding, southWest.lng - padding);
         var newNorthEast = L.latLng(northEast.lat + padding, northEast.lng + padding);
         return L.latLngBounds(newSouthWest, newNorthEast);
-
     };
 
     globals.setPrecinctProperties(data.geom.objects[neighborhoods]);
@@ -29,23 +28,32 @@ globals.initD3Map = function(msg, data) {
     // adds the polys in the topojson order to add a data-id and geom class to the
     // layer so I can handle it D3-ish rather than through the Leaflet API.
 
-    d3Layer = L.geoJson(topojson.feature(data.geom, data.geom.objects[neighborhoods]), {
+    var feature = topojson.feature(data.geom, data.geom.objects[neighborhoods]);
+    d3Layer = L.geoJson(feature, {
         style: {
             "fillColor": "rgba(0,0,0,0)",
             "color": "none",
             "fillOpacity": 1
         }
-    }).addTo(map);
+    });
+    d3Layer.addTo(map);
 
     map.setMaxBounds(setPanBounds(0.25));
 
-    d3.selectAll(".leaflet-overlay-pane svg path").attr("class", "geom metric-hover").attr("data-id", function(d, i) {
-      try {
-        return data.geom.objects[neighborhoods].geometries[i].id;
-      } catch (e) {
-        console.log("i " + i + " " + e);
-      }
-    });
+    d3.selectAll(".leaflet-overlay-pane svg path")
+      .attr("class", "geom metric-hover")
+      .attr("data-id", function(d, i) {
+        try {
+          // EDS: for some reason, after updating precinct boundaries,
+          // selecting these elements always includes an extra element
+          // ie there are 291 precincts but this selection includes 292 and
+          // the index is off by one. No clue.
+          return i - 1;
+          // return data.geom.objects[neighborhoods].geometries[i].id;
+        } catch (e) {
+          console.log("i " + i + " " + e);
+        }
+      });
 
     d3Layer.on("click", function(d) {
         var sel = d3.select(".geom[data-id='" + d.layer.feature.id + "']");
@@ -90,7 +98,6 @@ globals.initD3Map = function(msg, data) {
                 "weight": 1
             }
         }).addTo(map);
-        console.log('added');
     }
 }
 

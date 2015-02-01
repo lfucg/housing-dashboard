@@ -1,5 +1,5 @@
-globals.precinctName = function(id) {
-  return globals.precinctProperties[id]['NAME'];
+globals.precinctProperty = function(prop, id) {
+  return globals.precinctProperties[id][prop];
 }
 
 _.templateSettings.variable = "rc";

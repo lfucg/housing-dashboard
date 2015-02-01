@@ -76,7 +76,10 @@ globals.initD3Map = function(msg, data) {
             if ($.isNumeric(sel.attr("data-value"))) {
                 num = dataPretty(sel.attr("data-value"), $("#metric").val());
             }
-            return "<p class='tip'>Precinct: " + globals.precinctName(sel.attr("data-id")) + "<span>" + num + "</span></p>";
+            return "<p class='tip'>" +
+              "Precinct: " + globals.precinctProperty('NAME', sel.attr("data-id")) +
+              "<br>Council District: " + globals.precinctProperty('COUNCIL', sel.attr("data-id")) +
+              "<span>" + num + "</span></p>";
         },
         container: '#map'
     });

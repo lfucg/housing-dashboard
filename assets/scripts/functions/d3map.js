@@ -1,5 +1,12 @@
+globals.setPrecinctProperties = function(precincts) {
+  globals.precinctProperties = {};
+  precincts.geometries.forEach(function(precinct) {
+    globals.precinctProperties[precinct.properties.OBJECTID] = precinct.properties;
+  });
+}
+
 // todo figure out whey there is a need to initMap in two different ways (global versus setup)
-globals.initMap = function(msg, data) {
+globals.initD3Map = function(msg, data) {
     var setPanBounds = function(padding) {
         // Creates pan bounds with custom padding around data extent.
 
@@ -11,6 +18,8 @@ globals.initMap = function(msg, data) {
         return L.latLngBounds(newSouthWest, newNorthEast);
 
     };
+
+    globals.setPrecinctProperties(data.geom.objects[neighborhoods]);
 
     // Eyes wide open for this narly hack.
     // There are lots of different ways to put a D3 layer on Leaflet, and I found

@@ -1,5 +1,5 @@
 globals.precinctName = function(id) {
-  return id + ' ' + precincts[id];
+  return globals.precinctProperties[id]['NAME'];
 }
 
 _.templateSettings.variable = "rc";
@@ -28,16 +28,9 @@ globals.getURLParameter = function(name) {
 }
 
 var setup = {
-  loadPrecinctNames: function() {
-    $.getJSON('data/precincts.geojson', function(precinctJson) {
-      _.each(precinctJson.features, function(feature) {
-        precincts[feature.properties.OBJECTID - 1] = feature.properties.NAME;
-      });
-    });
-  },
   initPubSub: function() {
     // pubsub subscriptions
-    PubSub.subscribe('initialize', globals.initMap);
+    PubSub.subscribe('initialize', globals.initD3Map);
     // PubSub.subscribe('initialize', initTypeahead);
     PubSub.subscribe('changeYear', globals.setExtent);
     PubSub.subscribe('changeYear', globals.drawMap);
@@ -314,7 +307,6 @@ globals.recordMetricHistory = function(msg, data) {
 
 $(document).ready(function () {
 
-    setup.loadPrecinctNames();
     setup.initPubSub();
     // setup.loadMetricFromUrl();
     // setup.initPushstate();

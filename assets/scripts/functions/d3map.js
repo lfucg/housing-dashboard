@@ -40,19 +40,14 @@ globals.initD3Map = function(msg, data) {
 
     map.setMaxBounds(setPanBounds(0.25));
 
+    // EDS 20150201: the stonewall precinct is a multipolygon
+    // and contributes 2 elements to the d3 selectAll, which throws off
+    // all indexes after it by 1. Thanks Obama, to be sure.
+    var stonewallMultipolygonId = 165;
     d3.selectAll(".leaflet-overlay-pane svg path")
       .attr("class", "geom metric-hover")
       .attr("data-id", function(d, i) {
-        try {
-          // EDS: for some reason, after updating precinct boundaries,
-          // selecting these elements always includes an extra element
-          // ie there are 291 precincts but this selection includes 292 and
-          // the index is off by one. No clue.
-          return i - 1;
-          // return data.geom.objects[neighborhoods].geometries[i].id;
-        } catch (e) {
-          console.log("i " + i + " " + e);
-        }
+        return i <= stonewallMultipolygonId ? i : i - 1;
       });
 
     d3Layer.on("click", function(d) {

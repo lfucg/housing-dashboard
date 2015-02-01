@@ -147,7 +147,9 @@ var setup = {
     var yearControl = L.control({position: 'bottomright'});
     yearControl.onAdd = function(map) {
         this._div = L.DomUtil.create('div', 'yearDisplay time text-right');
-        this._div.innerHTML = '<h3 class="time-year">2012</h3><button type="button" class="btn btn-primary btn-looper"><span class="glyphicon glyphicon-play"></span></button><div class="slider"></div>';
+        // with 'play button'
+        // this._div.innerHTML = '<h3 class="time-year">2012</h3><button type="button" class="btn btn-primary btn-looper"><span class="glyphicon glyphicon-play"></span></button><div class="slider"></div>';
+        this._div.innerHTML = '<h3 class="time-year">2012</h3><div class="slider"></div>';
         return this._div;
     };
     yearControl.addTo(map);

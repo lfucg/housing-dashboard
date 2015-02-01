@@ -1,5 +1,5 @@
 globals.precinctName = function(id) {
-  return precincts[id];
+  return id + ' ' + precincts[id];
 }
 
 _.templateSettings.variable = "rc";

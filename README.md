@@ -4,6 +4,24 @@
 
 The dashboard displays neighborhood-level data -- such as building permits, foreclosures, and code enforcement housing violations -- on a year-over-year basis, allowing users to not only see how neighborhoods compare to each other, but also how neighborhoods have changed over time. Data for the dashboard has been provided by the [Lexington-Fayette Urban County Government](http://lexingtonky.gov).
 
+## Updating district and precinct geometries
+
+### If you have QGIS
+
+* Add vector layers:
+  * Council.shp, rename to districts, export to districts.geojson
+  * VotingPrecincts.shp, rename to precincts, export to precincts.geojson
+
+```
+topojson -o assets/data/geography.topo.json -s 7e-11 --properties --id-property=OBJECTID precincts.geojson districts.geojson
+rm precincts.geojson districts.geojson # once the districts/precincts render correctly on the map
+```
+
+### If you don't have QGIS
+
+* topojson -o assets/data/geography.topo.json -s 7e-11 --properties --id-property=OBJECTID VotingPrecinct.shp Council.shp
+* open the topo file and rename Objects like so: VotingPrecinct to precincts, and Council to districts
+
 ## The Application
 
 As of August 26, the application has the following datasets:

@@ -1,5 +1,12 @@
+globals.setPrecinctProperties = function(precincts) {
+  globals.precinctProperties = {};
+  precincts.geometries.forEach(function(precinct) {
+    globals.precinctProperties[precinct.properties.OBJECTID] = precinct.properties;
+  });
+}
+
 // todo figure out whey there is a need to initMap in two different ways (global versus setup)
-globals.initMap = function(msg, data) {
+globals.initD3Map = function(msg, data) {
     var setPanBounds = function(padding) {
         // Creates pan bounds with custom padding around data extent.
 
@@ -9,8 +16,9 @@ globals.initMap = function(msg, data) {
         var newSouthWest = L.latLng(southWest.lat - padding, southWest.lng - padding);
         var newNorthEast = L.latLng(northEast.lat + padding, northEast.lng + padding);
         return L.latLngBounds(newSouthWest, newNorthEast);
-
     };
+
+    globals.setPrecinctProperties(data.geom.objects[neighborhoods]);
 
     // Eyes wide open for this narly hack.
     // There are lots of different ways to put a D3 layer on Leaflet, and I found
@@ -20,23 +28,27 @@ globals.initMap = function(msg, data) {
     // adds the polys in the topojson order to add a data-id and geom class to the
     // layer so I can handle it D3-ish rather than through the Leaflet API.
 
-    d3Layer = L.geoJson(topojson.feature(data.geom, data.geom.objects[neighborhoods]), {
+    var feature = topojson.feature(data.geom, data.geom.objects[neighborhoods]);
+    d3Layer = L.geoJson(feature, {
         style: {
             "fillColor": "rgba(0,0,0,0)",
             "color": "none",
             "fillOpacity": 1
         }
-    }).addTo(map);
+    });
+    d3Layer.addTo(map);
 
     map.setMaxBounds(setPanBounds(0.25));
 
-    d3.selectAll(".leaflet-overlay-pane svg path").attr("class", "geom metric-hover").attr("data-id", function(d, i) {
-      try {
-        return data.geom.objects[neighborhoods].geometries[i].id;
-      } catch (e) {
-        console.log("i " + i + " " + e);
-      }
-    });
+    // EDS 20150201: the stonewall precinct is a multipolygon
+    // and contributes 2 elements to the d3 selectAll, which throws off
+    // all indexes after it by 1. Thanks Obama, to be sure.
+    var stonewallMultipolygonId = 165;
+    d3.selectAll(".leaflet-overlay-pane svg path")
+      .attr("class", "geom metric-hover")
+      .attr("data-id", function(d, i) {
+        return i <= stonewallMultipolygonId ? i : i - 1;
+      });
 
     d3Layer.on("click", function(d) {
         var sel = d3.select(".geom[data-id='" + d.layer.feature.id + "']");
@@ -64,7 +76,10 @@ globals.initMap = function(msg, data) {
             if ($.isNumeric(sel.attr("data-value"))) {
                 num = dataPretty(sel.attr("data-value"), $("#metric").val());
             }
-            return "<p class='tip'>Precinct: " + globals.precinctName(sel.attr("data-id")) + "<span>" + num + "</span></p>";
+            return "<p class='tip'>" +
+              "Precinct: " + globals.precinctProperty('NAME', sel.attr("data-id")) +
+              "<br>Council District: " + globals.precinctProperty('COUNCIL', sel.attr("data-id")) +
+              "<span>" + num + "</span></p>";
         },
         container: '#map'
     });
@@ -81,7 +96,6 @@ globals.initMap = function(msg, data) {
                 "weight": 1
             }
         }).addTo(map);
-        console.log('added');
     }
 }
 

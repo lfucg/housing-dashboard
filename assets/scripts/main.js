@@ -1,5 +1,5 @@
-globals.precinctName = function(id) {
-  return precincts[id];
+globals.precinctProperty = function(prop, id) {
+  return globals.precinctProperties[id][prop];
 }
 
 _.templateSettings.variable = "rc";
@@ -28,16 +28,9 @@ globals.getURLParameter = function(name) {
 }
 
 var setup = {
-  loadPrecinctNames: function() {
-    $.getJSON('data/precincts.geojson', function(precinctJson) {
-      _.each(precinctJson.features, function(feature) {
-        precincts[feature.properties.OBJECTID - 1] = feature.properties.NAME;
-      });
-    });
-  },
   initPubSub: function() {
     // pubsub subscriptions
-    PubSub.subscribe('initialize', globals.initMap);
+    PubSub.subscribe('initialize', globals.initD3Map);
     // PubSub.subscribe('initialize', initTypeahead);
     PubSub.subscribe('changeYear', globals.setExtent);
     PubSub.subscribe('changeYear', globals.drawMap);
@@ -154,7 +147,9 @@ var setup = {
     var yearControl = L.control({position: 'bottomright'});
     yearControl.onAdd = function(map) {
         this._div = L.DomUtil.create('div', 'yearDisplay time text-right');
-        this._div.innerHTML = '<h3 class="time-year">2012</h3><button type="button" class="btn btn-primary btn-looper"><span class="glyphicon glyphicon-play"></span></button><div class="slider"></div>';
+        // with 'play button'
+        // this._div.innerHTML = '<h3 class="time-year">2012</h3><button type="button" class="btn btn-primary btn-looper"><span class="glyphicon glyphicon-play"></span></button><div class="slider"></div>';
+        this._div.innerHTML = '<h3 class="time-year">2012</h3><div class="slider"></div>';
         return this._div;
     };
     yearControl.addTo(map);
@@ -314,7 +309,6 @@ globals.recordMetricHistory = function(msg, data) {
 
 $(document).ready(function () {
 
-    setup.loadPrecinctNames();
     setup.initPubSub();
     // setup.loadMetricFromUrl();
     // setup.initPushstate();

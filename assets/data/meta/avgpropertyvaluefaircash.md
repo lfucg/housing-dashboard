@@ -1,14 +1,16 @@
 ## Residential Property Value
-Average tax value of single-family dwellings, condominiums and townhomes for Voting Precinct.
+Average fair cash value of residential properties for each voting precinct.
 
 ### Why is this important?
-Average residential property value is a good indicator of the health of individual properties themselves in a given area. High property value in an area indicates maintenance of properties in that area, but more importantly, it is a good indicator of desirability of an area.
+Average residential property value can be a good indicator of the health of individual properties themselves in a given area. High property values often indicate a high level of maintenance, amenities, and the desirability of an area.
 
 ### About the Data
-The fair cash value for all properties in a voting precinct divided by the total number of properties in that precinct.
+The fair cash value for residential properties in a voting precinct divided by the total number of properties in that precinct.
 
-_Source: Fayette County Property Valuation Administrator, 2011-2014_
+_Source: David O'Neill - Fayette County Property Valuation Administrator, 2011-2014_
+
+Voting precincts were selected to represent neighborhoods because they cover all of Lexington, do not overlap, and more closely resemble neighborhood boundaries than census tracts or other boundaries. 
 
 ### Additional Resources
-+ [Fayette County Property Valuation Administrator](http://www.fayette-pva.com/)
++ [David O'Neill - Fayette County Property Valuation Administrator](http://www.fayette-pva.com/)
 + [Download the Data](http://www.civicdata.com/dataset/lexington-property-values/resource/e8427a07-406d-48c3-9beb-e3fa8141b686)

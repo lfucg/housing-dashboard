@@ -9,7 +9,8 @@ Number of code enforcement calls for housing violations.
 
 _Source: Lexington Department of Planning, Preservation, and Development, 2011-2014_
 
-Voting precincts were selected to represent neighborhoods because they cover all of Lexington, do not overlap, and more closely resemble neighborhood boundaries than census tracts or other boundaries. 
+### Neighborhood Boundaries
+Voting precincts were selected to represent neighborhoods because they cover all of Lexington, do not overlap, and more closely resemble neighborhood boundaries than census tracts or other available boundaries. They may not exactly match how people perceive the boundaries of their neighborhood, but are the most useful available geography for tracking and comparing information across Lexington. 
 
 ### Additional Resources
 + [Lexington Division of Code Enforcement](http://www.lexingtonky.gov/index.aspx?page=950)

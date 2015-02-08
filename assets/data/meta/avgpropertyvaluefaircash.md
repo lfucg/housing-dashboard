@@ -9,7 +9,6 @@ The fair cash value for residential properties in a voting precinct divided by t
 
 _Source: David O'Neill - Fayette County Property Valuation Administrator, 2011-2014_
 
-### Neighborhood Boundaries
 Voting precincts were selected to represent neighborhoods because they cover all of Lexington, do not overlap, and more closely resemble neighborhood boundaries than census tracts or other available boundaries. They may not exactly match how people perceive the boundaries of their neighborhood, but are the most useful available geography for tracking and comparing information across Lexington. 
 
 ### Additional Resources

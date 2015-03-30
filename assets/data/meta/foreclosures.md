@@ -13,5 +13,4 @@ Voting precincts were selected to represent neighborhoods because they cover all
 
 ### Additional Resources
 + [David O'Neill - Fayette County Property Valuation Administrator](http://www.fayette-pva.com/)
-+ [Download the Data](http://www.civicdata.com/dataset/lexington-foreclosure-sales-3/resource/0e2f75bd-7cfd-4e3b-8770-cb7119c623ed)
 
